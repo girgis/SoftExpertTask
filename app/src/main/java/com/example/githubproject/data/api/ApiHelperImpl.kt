@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(private val apiService: ApiService): ApiHelper{
 
-    override suspend fun getUsers(page: Int): Response<CarsModel> = apiService.getUsers(1)
+    override suspend fun getUsers(page: Int): Response<CarsModel> = apiService.getUsers(page)
 
 }

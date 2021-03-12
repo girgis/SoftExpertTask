@@ -1,27 +1,56 @@
 package com.mindorks.framework.mvvm.ui.main.adapter
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.githubproject.R
-import com.example.githubproject.data.model.User
+import com.example.githubproject.data.model.FavoriteProducts
+import com.example.githubproject.data.model.Product
+import com.example.githubproject.ui.main.MainActivity
 import kotlinx.android.synthetic.main.item_layout.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainAdapter(
-    private val users: ArrayList<User>
+    val mContext: Context,
+    val listener: OnItemClickListener,
+    private val products : ArrayList<Product>
 ) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
-    class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(user: User) {
-            itemView.textViewUserName.text = user.brand
-            itemView.textViewUserEmail.text = user.constractionYear
-            itemView.textIsUsed.text = "is used: ".plus(user.isUsed)
-            Glide.with(itemView.imageViewAvatar.context)
-                .load(user.imageUrl)
-                .into(itemView.imageViewAvatar)
+    var context:Context = mContext
+    val mListener: OnItemClickListener? = listener
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Product?, position: Int)
+    }
+
+    inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(product: Product, context: Context) {
+            itemView.textViewUserName.text = product.ProductName
+            itemView.addToFavorite.text = "ADD TO CART"
+            itemView.addToFavorite.setOnClickListener {
+                mListener?.onItemClick(product, adapterPosition)
+            }
+            if (context is MainActivity){
+                GlobalScope.launch(Dispatchers.IO) {
+                    if (!(context as MainActivity).db.favoriteProductsDao().getAll().isNullOrEmpty()) {
+                        for (p in (context as MainActivity).db.favoriteProductsDao().getAll()) {
+                            if (p.product_id == product.uid) {
+                                context.runOnUiThread(Runnable { itemView.addToFavorite.text = "REMOVE" })
+                            }
+                        }
+                    }
+                }
+            }
+//            itemView.textViewUserEmail.text = user.constractionYear
+//            itemView.textIsUsed.text = "is used: ".plus(user.isUsed)
+//            Glide.with(itemView.imageViewAvatar.context)
+//                .load(user.imageUrl)
+//                .into(itemView.imageViewAvatar)
         }
     }
 
@@ -33,17 +62,12 @@ class MainAdapter(
             )
         )
 
-    override fun getItemCount(): Int = users.size
+    override fun getItemCount(): Int = products.size
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) =
-        holder.bind(users[position])
+        holder.bind(products[position], context)
 
-    fun addData(list: List<User>, page: Int) {
-        Log.d("MainAdapter", "--- ++page ${page}")
-        if (page == 1) {
-            Log.d("MainAdapter", "--- page ${page}")
-            users.clear()
-        }
-        users.addAll(list)
+    fun addData(list: List<Product>) {
+        products.addAll(list)
     }
 }
