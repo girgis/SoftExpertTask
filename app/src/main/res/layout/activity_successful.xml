@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".features.success.SuccessfulActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/success_buy_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/success_buy_icon"
+            android:layout_marginTop="54dp"/>
+
+        <TextView
+            android:id="@+id/success_buy_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/success_buy_iv"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:text="@string/payment_done_success"/>
+
+        <ImageView
+            android:id="@+id/send_phone_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/phone_cl"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_cl"
+            android:src="@drawable/send_icon"
+            android:layout_marginEnd="32dp" />
+
+        <LinearLayout
+            android:id="@+id/ccp_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/send_phone_iv"
+            app:layout_constraintBottom_toBottomOf="@+id/send_phone_iv"
+            android:layout_marginStart="23dp"
+            android:padding="4dp"
+            android:background="@drawable/rounded_light_gray_with_border_bg">
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_textSize="14sp"
+                app:ccp_showNameCode="false"/>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phone_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ccp_ll"
+            app:layout_constraintEnd_toStartOf="@+id/send_phone_iv"
+            app:layout_constraintTop_toBottomOf="@+id/success_buy_tv"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="24dp"
+            android:padding="8dp"
+            android:background="@drawable/rounded_light_gray_with_border_bg">
+            
+            <ImageView
+                android:id="@+id/phone_icon_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/phone_icone"/>
+
+            <EditText
+                android:id="@+id/phone_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintStart_toEndOf="@+id/phone_icon_iv"
+                android:layout_marginStart="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="#AFAFAF"
+                android:textColorHint="#AFAFAF"
+                android:textSize="14sp"
+                android:inputType="phone"
+                android:lines="1"
+                android:maxLines="1"
+                android:hint="@string/phone_number"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/print_bill_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/phone_cl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_1"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_button_bg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/print_bill"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/send_bill_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/phone_cl"
+            app:layout_constraintStart_toStartOf="@+id/guideline_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_button_bg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/send_bill"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/send_bill_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/rounded_light_gray_with_b_border_bg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/back_to_home"
+            android:textSize="14sp"
+            android:textColor="#368EF3"/>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/loading_ll"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            layout="@layout/loading_layout"
+            android:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

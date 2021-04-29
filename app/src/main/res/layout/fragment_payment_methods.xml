@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.scanning.ui.PaymentMethodsFragment"
+    android:background="#B3707070"
+    android:clickable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/top_corner_rounded_white"
+        android:padding="30dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.333" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.666" />
+
+        <TextView
+            android:id="@+id/payment_methods_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/payment_methods"
+            android:textSize="16sp"
+            android:textColor="#090909"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/online_payment_btn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@+id/payment_methods_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/blue_rectangle"
+            android:src="@drawable/icon_credit_card"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/online_payment_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_1"
+            android:text="@string/online_payment"
+            android:textSize="12sp"
+            android:textColor="#090909"/>
+
+        <ImageButton
+            android:id="@+id/credit_payment_btn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@+id/payment_methods_tv"
+            app:layout_constraintStart_toStartOf="@id/guideline_1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_2"
+            android:layout_marginEnd="6dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg"
+            android:src="@drawable/credit_card"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/credit_payment_btn"
+            app:layout_constraintStart_toStartOf="@id/guideline_1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_2"
+            android:text="@string/credit_payment"
+            android:textSize="12sp"
+            android:textColor="#090909"/>
+
+        <ImageButton
+            android:id="@+id/cash_payment_btn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@+id/payment_methods_tv"
+            app:layout_constraintStart_toStartOf="@id/guideline_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg"
+            android:src="@drawable/cash"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:id="@+id/cash_payment_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/credit_payment_btn"
+            app:layout_constraintStart_toStartOf="@id/guideline_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/cash_payment"
+            android:textSize="12sp"
+            android:textColor="#090909"/>
+
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cash_payment_lbl"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/rounded_button_bg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/next"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/loading_ll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/loading_layout"
+        android:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

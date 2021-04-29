@@ -1,0 +1,147 @@
+<resources>
+    <string name="app_name">Tradex POS</string>
+
+    <string name="connection_error">Connection Error</string>
+    <string name="success">Success</string>
+
+    <!-- login screen -->
+    <string name="login_hint">Welcome again! To continue, log in</string>
+    <string name="user_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_btn">Sign In</string>
+
+    <!-- Main screen -->
+    <string name="welcome_txt">Welcome</string>
+    <string name="market_name">Market Name</string>
+    <string name="sale_txt">Sale</string>
+    <string name="stock_txt">Store</string>
+    <string name="sale_history_txt">Sale Orders</string>
+    <string name="stock_history_txt">Store Orders</string>
+    <string name="inquiry_number_txt">Inquiry number</string>
+    <string name="inquiry_button_txt">Inquiry</string>
+    <string name="id_required">Order or cart Id is required</string>
+
+    <!-- scanning screen -->
+    <string name="barcode_scanning">Barcode Scanning</string>
+    <string name="barcode_scanning_hint">قوم بتوجيه الكاميرا علي الباركود الخاص بالمنتج</string>
+    <string name="barcode_scanning_now">الفحص الاَن</string>
+    <string name="product_key_list">Product</string>
+    <string name="quantity_key_list">Quantity</string>
+    <string name="price_key_list">Price</string>
+    <string name="type_key_list">Type</string>
+    <string name="buy">Buy</string>
+    <string name="buy_1">Products by</string>
+    <string name="currency">E.L</string>
+    <string name="activate">Activate</string>
+    <string name="discount_code">Discount code</string>
+    <string name="total_products">Total Products</string>
+    <string name="write_barCode">Please write Product BarCode</string>
+    <string name="payment_done_success">Payment done Successfully</string>
+    <string name="print_bill">Print Invoice</string>
+    <string name="send_bill">Send Invoice</string>
+    <string name="back_to_home">Back To Home</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="enter_barcode">Please enter barcode</string>
+
+
+    <!-- payment fragment methods -->
+    <string name="payment_methods">Payment Methods</string>
+    <string name="online_payment">Online Payment</string>
+    <string name="credit_payment">Credit card</string>
+    <string name="cash_payment">Cash</string>
+    <string name="next">Next</string>
+
+    <!-- store screen -->
+    <string name="store">Store</string>
+    <string name="scan_product">Scan Product</string>
+
+    <!-- store products -->
+    <string name="add_to_cart">Add to cart</string>
+    <string name="inquire">Inquire</string>
+    <string name="go">Go</string>
+    <string name="done">Done</string>
+    <string name="product">Product</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">Price</string>
+    <string name="add_to_cart_successfully">Added to cart successfully</string>
+    <string name="invoice_number">Invoice Number:</string>
+    <string name="unpaid_invoice_number">Unpaid Invoice Number:</string>
+
+    <!-- store scan product -->
+    <string name="do_you_want_add_cart">Do you want add product to Cart?</string>
+    <string name="remaining">Remaining</string>
+    <string name="description">description</string>
+
+    <!-- cart screen -->
+    <string name="cart">Cart</string>
+    <string name="invoice_details_title">Invoice Details</string>
+    <string name="order_details_title">Order Details</string>
+
+    <!-- ordersHistory screen -->
+    <string name="sales_history">Sales History</string>
+    <string name="orders_history">Orders History</string>
+    <string name="search_for_order">Search for order</string>
+    <string name="bill_number">Order No.:</string>
+    <string name="unpaid_bill_number">Unpaid Invoice</string>
+    <string name="uncompleted_order">Uncompleted Order:</string>
+    <string name="quantity_dot">Quantity:</string>
+    <string name="price_dot">Price:</string>
+
+    <!-- profile screen -->
+    <string name="english_lang">English Language</string>
+    <string name="change_lang">Change Language</string>
+    <string name="logout">Logout</string>
+    <string name="email">Email</string>
+    <string name="branch_id">Branch ID</string>
+    <string name="branch_phone">Branch Phone</string>
+    <string name="branch_address">Branch Address</string>
+    <string name="phone_id">Phone ID</string>
+    <string name="change_password">Change Password</string>
+
+    <!-- Success screen -->
+    <string name="phone_required">Phone number is required</string>
+
+    <!-- payment with credit screen -->
+    <string name="c_screen_hint">Hold the card near the machine to complete the payment process</string>
+    <string name="checking_progress">Checking in progress</string>
+
+
+    <string name="repoUrl">https://github.com/pro100svitlo/Credit-Card-NFC-Reader#questions-and-help</string>
+    <string name="tv_noNfc">There is no NFC module on this device</string>
+    <string name="tv_tapYourCard">Please put your card to back panel of the phone</string>
+    <string name="ad_progressBar_title">Scanning ...</string>
+    <string name="ad_progressBar_mess">Please do not remove or move card during reading.</string>
+    <string name="snack_unknown_bank_card">This is unknown bank card. Please, go to my github repo!</string>
+    <string name="snack_doNotMoveCard">Please do not move card, try again !</string>
+    <string name="snack_unknownEmv">Unknown EMV card</string>
+    <string name="snack_lockedNfcCard">NFC is locked on this card.</string>
+    <string name="ad_nfcTurnOn_title">NFC is turned off.</string>
+    <string name="ad_nfcTurnOn_message">You need turn on NFC module for scanning. Wish turn on it now?</string>
+    <string name="ad_nfcTurnOn_pos">Turn on</string>
+    <string name="ad_nfcTurnOn_neg">Dismiss</string>
+
+    <string name="read_card_hint">Checking in progress</string>
+
+    <!-- details screen -->
+    <string name="return_btn_tv">Return</string>
+
+    <!-- return screen -->
+    <string name="products_to_be_purchased">Products to be purchased</string>
+    <string name="returned">Returned</string>
+
+    <!-- forgot Password screen -->
+    <string name="retrieve_password">Retrieve Password</string>
+    <string name="enter_phine_email">Enter Phone or Email to retrive Password</string>
+    <string name="activiation_sent_to">Code sent to </string>
+    <string name="confirm_number">Confirm Phone Number</string>
+    <string name="confirm">Confirm</string>
+    <string name="send">Send</string>
+    <string name="back_to_login">Back to login</string>
+    <string name="phone_is_required">Phone is required</string>
+    <string name="password_is_required">Password is required</string>
+    <string name="password_mismatch">Password is mismatched</string>
+    <string name="create_new_pass">Create a new password</string>
+    <string name="create_new_pass_hint">Create a new password so that it does not look like the old password</string>
+
+</resources>

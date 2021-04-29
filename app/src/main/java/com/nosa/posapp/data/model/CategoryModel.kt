@@ -1,0 +1,12 @@
+package com.nosa.posapp.data.model
+
+
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class CategoryModel (
+    var message: String = "",
+    var data: CategoryPaginate,
+    var error: List<String>,
+    var success: Boolean
+)

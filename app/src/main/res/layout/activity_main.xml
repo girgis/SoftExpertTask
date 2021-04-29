@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    tools:context=".features.main.MainActivity"
+    android:layout_marginTop="20dp"
+    android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <ImageView
+            android:id="@+id/shop"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/shop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_2"/>
+
+        <TextView
+            android:id="@+id/welcome_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shop"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:text="@string/welcome_txt"/>
+
+        <TextView
+            android:id="@+id/market_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/shop"
+            app:layout_constraintStart_toEndOf="@+id/shop"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="2dp"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:textColor="#368EF3"
+            android:text="@string/market_name"/>
+
+        <ImageView
+            android:id="@+id/logout_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_3"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/Sale_cv"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/shop"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_2"
+            app:layout_constraintEnd_toEndOf="@id/guideline_1"
+            android:layout_marginEnd="14dp"
+            tools:ignore="MissingConstraints"
+            app:cardCornerRadius="7dp"
+            app:cardBackgroundColor="#F1F7FA"
+            app:strokeWidth="1dp"
+            app:strokeColor="#368EF3"
+            android:clickable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shopping_basket" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#368EF3"
+                    android:text="@string/sale_txt"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/stock_cv"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/shop"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toEndOf="@+id/guideline_1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_3"
+            android:layout_marginStart="14dp"
+            tools:ignore="MissingConstraints"
+            app:cardCornerRadius="7dp"
+            app:cardBackgroundColor="#F1F7FA"
+            app:strokeWidth="1dp"
+            app:strokeColor="#368EF3"
+            android:clickable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/store" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#368EF3"
+                    android:text="@string/stock_txt"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/Sale_history_cv"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/Sale_cv"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_2"
+            app:layout_constraintEnd_toEndOf="@id/guideline_1"
+            android:layout_marginEnd="14dp"
+            tools:ignore="MissingConstraints"
+            app:cardCornerRadius="7dp"
+            app:cardBackgroundColor="#F1F7FA"
+            app:strokeWidth="1dp"
+            app:strokeColor="#368EF3"
+            android:clickable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bill"
+                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#368EF3"
+                    android:text="@string/sale_history_txt"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/stock_history_cv"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/stock_cv"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/guideline_1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_3"
+            android:layout_marginStart="14dp"
+            tools:ignore="MissingConstraints"
+            app:cardCornerRadius="7dp"
+            app:cardBackgroundColor="#F1F7FA"
+            app:strokeWidth="1dp"
+            app:strokeColor="#368EF3"
+            android:clickable="true">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shopping_list"
+                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#368EF3"
+                    android:text="@string/stock_history_txt"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/inquiry_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Sale_history_cv"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/top_corner_rounded">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/inquiry_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:padding="12dp"
+                android:gravity="start|center_vertical"
+                android:background="@drawable/user_login_bg">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/inquire_icon"/>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="#AFAFAF"
+                    android:layout_marginStart="10dp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/user_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="14sp"
+                    android:textColor="@color/login_border"
+                    android:textColorHint="@color/login_border"
+                    android:hint="@string/inquiry_number_txt"
+                    android:inputType="number"
+                    android:gravity="center_vertical"
+                    android:padding="2dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="6dp"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <Button
+                android:id="@+id/inquiry_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inquiry_ll"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/rounded_button_bg"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/inquiry_button_txt"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="10dp"
+                android:foreground="?android:attr/selectableItemBackground"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inquiry_cl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#E5E5E5"/>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/loading_ll"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            layout="@layout/loading_layout"
+            android:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="12dp"
+    android:paddingEnd="12dp"
+    android:paddingStart="12dp">
+
+    <TextView
+        android:id="@+id/product_key_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/product_key_list"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/product_value_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_key_tv"
+        app:layout_constraintTop_toTopOf="@+id/product_key_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/product_key_tv"
+        android:layout_marginStart="6dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:gravity="center_vertical|end" />
+
+    <TextView
+        android:id="@+id/quantity_key_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quantity_ll"
+        app:layout_constraintBottom_toBottomOf="@+id/quantity_ll"
+        android:text="@string/quantity_key_list"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/quantity_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_key_tv"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/item_quanitiy_bg"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/item_plus_iv"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:src="@drawable/plus"
+            android:padding="4dp"
+            android:layout_marginStart="12dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/quantity_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:text="0"
+            android:textStyle="normal"
+            android:gravity="center_vertical" />
+
+        <ImageView
+            android:id="@+id/item_minus_iv"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:src="@drawable/minus"
+            android:padding="4dp"
+            android:layout_marginEnd="12dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/type_key_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity_ll"
+        android:layout_marginTop="12dp"
+        android:text="@string/price_key_list"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/price_key_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_key_tv"
+        android:layout_marginTop="12dp"
+        android:text="@string/price_key_list"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/price_value_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/price_key_tv"
+        app:layout_constraintTop_toTopOf="@+id/price_key_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/price_key_tv"
+        android:layout_marginStart="6dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:gravity="center_vertical|end" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/d_line"
+        app:layout_constraintTop_toBottomOf="@+id/price_value_tv"
+        android:layout_marginTop="12dp"/>
+
+    <ImageView
+        android:id="@+id/detele_product"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/price_key_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/delete"
+        android:visibility="gone"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

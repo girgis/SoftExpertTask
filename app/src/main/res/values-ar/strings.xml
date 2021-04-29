@@ -1,0 +1,146 @@
+<resources>
+    <string name="app_name">Tradex POS</string>
+
+    <string name="connection_error">Connection Error</string>
+    <string name="success">تم بنجاح</string>
+
+    <!-- login screen -->
+    <string name="login_hint">مرحباً بك من جديد! للمتابعة قم بتسجيل الدخول</string>
+    <string name="user_hint">أسم المستخدم</string>
+    <string name="password_hint">كلمة المرور</string>
+    <string name="forgot_password">نسيت كلمة السر؟</string>
+    <string name="login_btn">تسجيل الدخول</string>
+
+    <!-- Main screen -->
+    <string name="welcome_txt">أهلاً بك</string>
+    <string name="market_name">الزهراء ماركت</string>
+    <string name="sale_txt">البيع</string>
+    <string name="stock_txt">المخزن</string>
+    <string name="sale_history_txt">سجل البيع</string>
+    <string name="stock_history_txt">سجل الطلبات</string>
+    <string name="inquiry_number_txt">رقم الاستعلام</string>
+    <string name="inquiry_button_txt">استعلام</string>
+    <string name="id_required">رقم العربه او الطلب مطلوب</string>
+
+    <!-- scanning screen -->
+    <string name="barcode_scanning">فحص باركود</string>
+    <string name="barcode_scanning_hint">قوم بتوجيه الكاميرا علي الباركود الخاص بالمنتج</string>
+    <string name="barcode_scanning_now">الفحص الاَن</string>
+    <string name="product_key_list">المنتج</string>
+    <string name="quantity_key_list">الكمية</string>
+    <string name="price_key_list">السعر</string>
+    <string name="type_key_list">النوع</string>
+    <string name="buy">شراء</string>
+    <string name="buy_1">منتجات بسعر</string>
+    <string name="currency">ج.م</string>
+    <string name="activate">تفعيل</string>
+    <string name="discount_code">كود الخصم</string>
+    <string name="total_products">مجموع المنتجات</string>
+    <string name="write_barCode">Please write Product BarCode</string>
+    <string name="payment_done_success">تم الدفع بنجاح</string>
+    <string name="print_bill">طباعة الفاتورة</string>
+    <string name="send_bill">ارسال الفاتورة</string>
+    <string name="back_to_home">العودة للرئيسية</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="enter_barcode">برجاء ادخال الباركود</string>
+
+    <!-- payment fragment methods -->
+    <string name="payment_methods">طرق الدفع</string>
+    <string name="online_payment">دفع اونلاين</string>
+    <string name="credit_payment">البطاقة الذاكية</string>
+    <string name="cash_payment">نقدي</string>
+    <string name="next">التالي</string>
+
+    <!-- store screen -->
+    <string name="store">المخزن</string>
+    <string name="scan_product">فحص المنتج</string>
+
+    <!-- store products -->
+    <string name="add_to_cart">اضافة للعربة</string>
+    <string name="inquire">استعلام</string>
+    <string name="go">تطبيق</string>
+    <string name="done">تم</string>
+    <string name="product">المنتج</string>
+    <string name="quantity">الكمية</string>
+    <string name="price">السعر</string>
+    <string name="add_to_cart_successfully">تم الاضافة بنجاح</string>
+
+    <!-- store scan product -->
+    <string name="do_you_want_add_cart">هل تريد الاضافة للعربة؟</string>
+    <string name="remaining">المتبقي</string>
+    <string name="description">الوصف</string>
+
+    <!-- cart screen -->
+    <string name="cart">العربه</string>
+    <string name="invoice_details_title">تفاصيل الفاتورة</string>
+    <string name="order_details_title">تفاصيل الطلب</string>
+
+    <!-- ordersHistory screen -->
+    <string name="sales_history">سجل البيع</string>
+    <string name="orders_history">سجل الطلبات</string>
+    <string name="search_for_order">البحث عن طلب</string>
+    <string name="bill_number">رقم الطلب:</string>
+    <string name="unpaid_bill_number">الفاتورة غير مدفوعة:</string>
+    <string name="uncompleted_order">طلب غير مكتمل:</string>
+    <string name="quantity_dot">الكمية:</string>
+    <string name="price_dot">السعر:</string>
+    <string name="invoice_number">رقم الفاتورة</string>
+    <string name="unpaid_invoice_number">فاتورة غير مدفوعة</string>
+
+    <!-- Success screen -->
+    <string name="phone_required">برجاْ ادخال رقم الهاتف</string>
+
+    <!-- payment with credit screen -->
+    <string name="c_screen_hint">قم بامساك البطاقة بالقرب من الجهاز لاتمام عملهة الدفع</string>
+    <string name="checking_progress">جاري الفحص</string>
+
+    <!-- profile screen -->
+    <string name="english_lang">اللغة العربية</string>
+    <string name="change_lang">تغير اللغة</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="branch_id">معرف الفرع</string>
+    <string name="branch_phone">رقم الفرع</string>
+    <string name="branch_address">عنوان الفرع</string>
+    <string name="phone_id">معرف الجهاز</string>
+    <string name="change_password">تغير كلمة المرور</string>
+
+
+    <string name="repoUrl">https://github.com/pro100svitlo/Credit-Card-NFC-Reader#questions-and-help</string>
+    <string name="tv_noNfc">There is no NFC module on this device</string>
+    <string name="tv_tapYourCard">Please put your card to back panel of the phone</string>
+    <string name="ad_progressBar_title">Scanning ...</string>
+    <string name="ad_progressBar_mess">Please do not remove or move card during reading.</string>
+    <string name="snack_unknown_bank_card">This is unknown bank card. Please, go to my github repo!</string>
+    <string name="snack_doNotMoveCard">Please do not move card, try again !</string>
+    <string name="snack_unknownEmv">Unknown EMV card</string>
+    <string name="snack_lockedNfcCard">NFC is locked on this card.</string>
+    <string name="ad_nfcTurnOn_title">NFC is turned off.</string>
+    <string name="ad_nfcTurnOn_message">You need turn on NFC module for scanning. Wish turn on it now?</string>
+    <string name="ad_nfcTurnOn_pos">Turn on</string>
+    <string name="ad_nfcTurnOn_neg">Dismiss</string>
+
+    <string name="read_card_hint">جاري الفحص</string>
+
+    <!-- details screen -->
+    <string name="return_btn_tv">استرجاع</string>
+
+    <!-- return screen -->
+    <string name="products_to_be_purchased">المنتجات اللتي تم شرائها</string>
+    <string name="returned">المرتجع</string>
+    
+    <!-- forgot Password screen -->
+    <string name="retrieve_password">استرجاع كلمة المرور</string>
+    <string name="enter_phine_email">قم بادخال رقم الهاتف أو البريد الالكتروني لاسترجاع كلمة المرور</string>
+    <string name="activiation_sent_to">تم الارسال الي رقم </string>
+    <string name="confirm_number">تاكيد رقم الهاتف</string>
+    <string name="confirm">تاكيد</string>
+    <string name="send">ارسال</string>
+    <string name="back_to_login">العودة لتسجيل الدخول</string>
+    <string name="phone_is_required">برجاء ادخال رقم الهاتف</string>
+    <string name="password_is_required">ادخل كلمة المرور الجديده</string>
+    <string name="password_mismatch">كلمة المرور غير متطابقة</string>
+    <string name="create_new_pass">انشاء كلمة المرور الجديدة</string>
+    <string name="create_new_pass_hint">قم بانشاء كلمة المرور الجديدة بحيث لا تشبه كلمة المرور القديمة</string>
+
+</resources>
