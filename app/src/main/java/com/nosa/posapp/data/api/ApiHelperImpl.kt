@@ -1,6 +1,8 @@
 package com.nosa.posapp.data.api
 
 import com.nosa.posapp.data.model.*
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -62,5 +64,8 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService): Api
 
     override suspend fun getSystemConstants(lang: String, token: String, terminal_id:String): Response<PaymentMethodsModel>
             = apiService.getSystemConstants(lang, token, terminal_id)
+
+    override suspend fun refundRequest(lang: String, token: String, terminal_id: String, body: RefundProductModel):
+            Response<ActivationCodeModel>  = apiService.refundRequest(lang, token, terminal_id, body)
 
 }

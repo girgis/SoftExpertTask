@@ -185,7 +185,7 @@ class ProductClickedFragment : Fragment(), View.OnClickListener, IOnBackPressed 
     private fun setProductDetails(){
         product?.let {product ->
             product_name_value_tv.text = product.name
-            quantity_name_value_tv.text = product.quantity
+            quantity_name_value_tv.text = product?.quantity?.toString()
             price_name_value_tv.text = product.price.toString()
         }
     }

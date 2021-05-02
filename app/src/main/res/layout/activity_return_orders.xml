@@ -53,7 +53,8 @@
                 android:padding="9dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="gone"/>
 
             <EditText
                 android:id="@+id/search_by_barcode_et"
@@ -64,7 +65,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/search_img"
-                app:layout_constraintEnd_toStartOf="@+id/blue_im"/>
+                app:layout_constraintEnd_toStartOf="@+id/blue_im"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"/>
 
             <ImageView
                 android:id="@+id/search_img"
@@ -81,8 +85,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="30dp"
             android:text="@string/products_to_be_purchased"
             android:textColor="#368EF3"
@@ -106,7 +109,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mRecycleView_products"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:nestedScrollingEnabled="false"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -121,7 +126,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mRecycleView_returned"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:nestedScrollingEnabled="false"/>
 
         </LinearLayout>
 
@@ -145,5 +152,16 @@
         android:drawablePadding="-30dp"
         android:textSize="14sp"
         android:textColor="#368EF3"/>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/loading_ll_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/loading_layout"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

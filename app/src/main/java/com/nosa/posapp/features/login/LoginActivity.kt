@@ -1,6 +1,8 @@
 package com.nosa.posapp.features.login
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +11,11 @@ import android.widget.Toast
 import com.nosa.posapp.R
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.example.githubproject.utils.Status
 import com.nosa.posapp.db.CachedUser
+import com.nosa.posapp.extensions.requestPermission
 import com.nosa.posapp.features.forgotPassword.ForgotPasswordActivity
 import com.nosa.posapp.features.main.MainActivity
 import com.nosa.posapp.utils.Utils
@@ -28,6 +32,18 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         setupUI()
         setupObserver()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkPermissions()
+    }
+
+    private fun checkPermissions(){
+        if (ContextCompat.checkSelfPermission(this@LoginActivity, Manifest.permission.CAMERA)
+            == PackageManager.PERMISSION_DENIED || ContextCompat.checkSelfPermission(this@LoginActivity, Manifest.permission.READ_PHONE_STATE)
+            == PackageManager.PERMISSION_DENIED)
+            requestPermission()
     }
 
     private fun setupUI() {

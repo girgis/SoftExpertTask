@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -83,32 +84,44 @@ class OrdersHistoryActivity : AppCompatActivity(), SellHistoryAdapter.OnItemClic
             }
         })
 
+        search_et.setOnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                makeRequest()
+                true
+            }
+            false
+        }
+
         search_icon_iv.setOnClickListener(View.OnClickListener { v ->
-            if (isValidData()){
-                Utils.getDeviceIMEI(this)?.let { terminal ->
-                    cachedUser.getUser()?.api_token?.let { token ->
-                        cachedUser.getUser()?.lang?.let { lang ->
-                            if (historyType == HistoryType.STOCK) {
-                                mainViewModel.searchOrders(
-                                    lang,
-                                    token,
-                                    terminal,
-                                    search_et.text.toString().trim(),
-                                    "stock"
-                                )
-                            } else
-                                mainViewModel.searchOrders(
-                                    lang,
-                                    token,
-                                    terminal,
-                                    search_et.text.toString().trim(),
-                                    "sell"
-                                )
-                        }
+            makeRequest()
+        })
+    }
+
+    private fun makeRequest(){
+        if (isValidData()){
+            Utils.getDeviceIMEI(this)?.let { terminal ->
+                cachedUser.getUser()?.api_token?.let { token ->
+                    cachedUser.getUser()?.lang?.let { lang ->
+                        if (historyType == HistoryType.STOCK) {
+                            mainViewModel.searchOrders(
+                                lang,
+                                token,
+                                terminal,
+                                search_et.text.toString().trim(),
+                                "stock"
+                            )
+                        } else
+                            mainViewModel.searchOrders(
+                                lang,
+                                token,
+                                terminal,
+                                search_et.text.toString().trim(),
+                                "sell"
+                            )
                     }
                 }
             }
-        })
+        }
     }
 
     private fun setupObserver(){

@@ -2,6 +2,8 @@ package com.nosa.posapp.data.repository
 
 import com.nosa.posapp.data.api.ApiHelper
 import com.nosa.posapp.data.model.*
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.Header
@@ -63,4 +65,7 @@ class MainRepository @Inject constructor(private val apiHelper: ApiHelper) {
 
     suspend fun getSystemConstants(lang: String, token: String, terminal_id:String): Response<PaymentMethodsModel>
             = apiHelper.getSystemConstants(lang, token, terminal_id)
+
+    suspend fun refundRequest(lang: String, token: String, terminal_id: String, body: RefundProductModel): Response<ActivationCodeModel>
+            = apiHelper.refundRequest(lang, token, terminal_id, body)
 }

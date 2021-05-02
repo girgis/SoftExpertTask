@@ -7,6 +7,7 @@
     <!-- login screen -->
     <string name="login_hint">Welcome again! To continue, log in</string>
     <string name="user_hint">Username</string>
+    <string name="branch_hint">Branch Name</string>
     <string name="password_hint">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="login_btn">Sign In</string>
@@ -39,6 +40,7 @@
     <string name="write_barCode">Please write Product BarCode</string>
     <string name="payment_done_success">Payment done Successfully</string>
     <string name="print_bill">Print Invoice</string>
+    <string name="print_order">Print Order</string>
     <string name="send_bill">Send Invoice</string>
     <string name="back_to_home">Back To Home</string>
     <string name="phone_number">Phone Number</string>
@@ -51,6 +53,12 @@
     <string name="credit_payment">Credit card</string>
     <string name="cash_payment">Cash</string>
     <string name="next">Next</string>
+    <string name="payment_data">Payment data</string>
+    <string name="owner_name">Owner name</string>
+    <string name="card_name">Name on the card</string>
+    <string name="card_number">Number on the Card</string>
+    <string name="ccv_number">CCV Number</string>
+    <string name="expire_date">Expire Date</string>
 
     <!-- store screen -->
     <string name="store">Store</string>
@@ -129,6 +137,9 @@
     <!-- return screen -->
     <string name="products_to_be_purchased">Products to be purchased</string>
     <string name="returned">Returned</string>
+    <string name="list_does_not_contains">Cart does not contain this product</string>
+    <string name="specify_returened_items">Please specify the returned items</string>
+    <string name="valid_returned_quantity">Not valid quantity</string>
 
     <!-- forgot Password screen -->
     <string name="retrieve_password">Retrieve Password</string>

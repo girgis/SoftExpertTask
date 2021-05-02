@@ -37,6 +37,7 @@ class ScanProductActivity : AppCompatActivity() {
     private var beepManager: BeepManager? = null
     private var lastText: String? = null
     private var product: Product? = null
+    var scanTime: Long = 0
 
     private val viewModel: ProductClickedViewModel by viewModels()
     private val scanningViewModel: ScanningViewModel by viewModels()
@@ -85,11 +86,11 @@ class ScanProductActivity : AppCompatActivity() {
 
     private val callback: BarcodeCallback = object : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
-            if(result.getText() == null || result.getText().equals(lastText)) {
+            if(result.getText() == null || (System.currentTimeMillis() - scanTime) <= 2000) {
                 // Prevent duplicate scans
                 return;
             }
-            lastText = result.text
+            scanTime = System.currentTimeMillis()
             Toast.makeText(this@ScanProductActivity, "Scanned: " + result.text, Toast.LENGTH_LONG).show()
             cachedUser.getUser()?.api_token?.let {
                 Utils.getDeviceIMEI(this@ScanProductActivity)?.let {terminal ->

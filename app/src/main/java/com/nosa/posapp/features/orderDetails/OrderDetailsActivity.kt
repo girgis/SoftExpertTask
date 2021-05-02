@@ -10,6 +10,7 @@ import com.nosa.posapp.R
 import com.nosa.posapp.data.model.Cart
 import com.nosa.posapp.data.model.Products
 import com.nosa.posapp.db.CachedUser
+import com.nosa.posapp.features.cart.success.SuccessCartActivity
 import com.nosa.posapp.features.orderDetails.adapters.ProductDetailsAdapter
 import com.nosa.posapp.features.ordersHistory.HistoryType
 import com.nosa.posapp.features.ordersHistory.OrdersHistoryActivity
@@ -59,17 +60,27 @@ class OrderDetailsActivity : AppCompatActivity(), ProductDetailsAdapter.OnItemCl
     private fun setupUI(){
         when(historyType){
             HistoryType.SELL -> {details_title_tv.text = getString(R.string.invoice_details_title)}
-            HistoryType.STOCK -> {details_title_tv.text = getString(R.string.order_details_title)}
+            HistoryType.STOCK -> {details_title_tv.text = getString(R.string.order_details_title)
+                buy_btn.text = getString(R.string.print_order)}
         }
 
         back_iv.setOnClickListener { v -> finish() }
         buy_btn.setOnClickListener(View.OnClickListener { v ->
-            cart?.let { startActivity(Intent(this@OrderDetailsActivity, SuccessfulActivity::class.java)
-                .putExtra(SuccessfulActivity.INTENT_SESSION, it.session_id)) }
+            cart?.let {
+                if (historyType == HistoryType.SELL) {
+                    startActivity(
+                        Intent(this@OrderDetailsActivity, SuccessfulActivity::class.java)
+                            .putExtra(SuccessfulActivity.INTENT_SESSION, it.session_id)
+                    )
+                }else{
+                    startActivity(Intent(this@OrderDetailsActivity, SuccessCartActivity::class.java)
+                        .putExtra(SuccessfulActivity.INTENT_SESSION, it.session_id))
+                }
+            }
         })
 
         return_btn.setOnClickListener { v -> startActivity(Intent(this@OrderDetailsActivity, ReturnOrdersActivity::class.java)
-                .putExtra(ReturnOrdersActivity.INTENT_CART, cart)) }
+                .putExtra(ReturnOrdersActivity.INTENT_CART, cart).putExtra(ReturnOrdersActivity.HISTORY_TYPE, historyType)) }
 
         mRecycleView.layoutManager = GridLayoutManager(this, 1)
         adapter = ProductDetailsAdapter(this, this, arrayListOf())

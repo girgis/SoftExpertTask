@@ -9,12 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.githubproject.utils.Status
 import com.nosa.posapp.R
+import com.nosa.posapp.data.model.PaymentMethod
+import com.nosa.posapp.db.CachedSysConstants
 import com.nosa.posapp.features.creditCard.CreditCardActivity
 import com.nosa.posapp.features.scanning.ScanningActivity
 import com.nosa.posapp.features.scanning.ScanningViewModel
@@ -38,11 +41,15 @@ class PaymentMethodsFragment : Fragment(), View.OnClickListener {
     private var param1: String? = null
     private var param2: String? = null
     private var onlinePaymentBTN: ImageButton? = null
+    private var online_payment_lbl: TextView? = null
     private var creditPaymentBTN: ImageButton? = null
+    private var credit_payment_lbl: TextView? = null
     private var cashPaymentBTN: ImageButton? = null
+    private var cash_payment_lbl: TextView? = null
     private val scanningViewModel: ScanningViewModel by activityViewModels()
     private var scanningActivity: ScanningActivity? = null
     private var paymentType: Int = 1
+    var cachedSysConstants: CachedSysConstants? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,9 +81,36 @@ class PaymentMethodsFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupUI(view: View){
+        cachedSysConstants = scanningActivity?.let { CachedSysConstants(it) }
+
         onlinePaymentBTN = view.findViewById<ImageButton>(R.id.online_payment_btn)
         creditPaymentBTN = view.findViewById<ImageButton>(R.id.credit_payment_btn)
         cashPaymentBTN = view.findViewById<ImageButton>(R.id.cash_payment_btn)
+
+        online_payment_lbl = view.findViewById<TextView>(R.id.online_payment_lbl)
+        credit_payment_lbl = view.findViewById<TextView>(R.id.credit_payment_lbl)
+        cash_payment_lbl = view.findViewById<TextView>(R.id.cash_payment_lbl)
+
+        cachedSysConstants?.let {
+            it.getSystemConstants()?.payment_methods?.let { list ->
+                list.forEach { paymentMethod: PaymentMethod ->
+                    when(paymentMethod.id){
+                        1 -> {
+                            onlinePaymentBTN?.visibility = View.VISIBLE
+                            online_payment_lbl?.visibility = View.VISIBLE
+                        }
+                        2 -> {
+                            creditPaymentBTN?.visibility = View.VISIBLE
+                            credit_payment_lbl?.visibility = View.VISIBLE
+                        }
+                        3 -> {
+                            cash_payment_lbl?.visibility = View.VISIBLE
+                            cashPaymentBTN?.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
+        }
 
         onlinePaymentBTN?.setOnClickListener(this)
         creditPaymentBTN?.setOnClickListener(this)
@@ -155,28 +189,36 @@ class PaymentMethodsFragment : Fragment(), View.OnClickListener {
                 if (scanningActivity != null && scanningActivity?.mSession_id != null) {
                     Utils.getDeviceIMEI(scanningActivity!!)?.let { terminal ->
                         scanningActivity?.cachedUser?.getUser()?.let {
-                            if (paymentType == 3) {
-                                scanningViewModel.makeOrder(
-                                    it.lang,
-                                    it.api_token,
-                                    terminal,
-                                    scanningActivity?.mSession_id!!,
-                                    "0599855959",
-                                    paymentType.toString(),
-                                    "",
-                                    ""
-                                )
-                            } else if (paymentType == 2) {
-                                scanningActivity?.let { scanningActivity ->
-                                    scanningActivity.cart?.let { cart ->
-                                        startActivity(
-                                            Intent(
-                                                scanningActivity,
-                                                CreditCardActivity::class.java
-                                            ).putExtra(CreditCardActivity.INTENT_DATA, cart)
-                                        )
+                            when (paymentType) {
+                                3 -> {
+                                    scanningViewModel.makeOrder(
+                                        it.lang,
+                                        it.api_token,
+                                        terminal,
+                                        scanningActivity?.mSession_id!!,
+                                        "0599855959",
+                                        paymentType.toString(),
+                                        "",
+                                        ""
+                                    )
+                                }
+                                2 -> {
+                                    scanningActivity?.let { scanningActivity ->
+                                        scanningActivity.cart?.let { cart ->
+                                            startActivity(
+                                                Intent(
+                                                    scanningActivity,
+                                                    CreditCardActivity::class.java
+                                                ).putExtra(CreditCardActivity.INTENT_DATA, cart)
+                                            )
+                                        }
                                     }
                                 }
+                                1 -> {
+                                    payment_methods_cl.visibility = View.GONE
+                                    card_cl.visibility = View.VISIBLE
+                                }
+                                else -> {}
                             }
                         }
                     }

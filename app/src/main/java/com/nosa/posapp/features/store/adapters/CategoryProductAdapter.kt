@@ -25,7 +25,7 @@ class CategoryProductAdapter(val context: Context,
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Product, context: Context) {
             itemView.productName_tv.text = product.name
-            itemView.productQuantity_tv.text = product.quantity
+            itemView.productQuantity_tv.text = product.quantity.toString()
             itemView.productQuantityType_tv.text = product.special
             if (!product.images.isNullOrEmpty())
                 Glide.with(context).load(product.images[0].imagefullpath).centerCrop().into(itemView.catImage_iv)

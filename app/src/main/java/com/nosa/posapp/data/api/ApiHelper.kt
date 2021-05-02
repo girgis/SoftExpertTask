@@ -1,7 +1,10 @@
 package com.nosa.posapp.data.api
 
 import com.nosa.posapp.data.model.*
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -45,4 +48,6 @@ interface ApiHelper {
     suspend fun resetPassword(lang: String, code: String, password: String, password_confirmation: String): Response<ActivationCodeModel>
 
     suspend fun getSystemConstants(lang: String, token: String, terminal_id:String): Response<PaymentMethodsModel>
+
+    suspend fun refundRequest(lang: String, token: String, terminal_id: String, body: RefundProductModel): Response<ActivationCodeModel>
 }

@@ -3,7 +3,9 @@ package com.nosa.posapp.features.store
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -105,18 +107,30 @@ class StoreActivity : AppCompatActivity(), CategoryAdapter.OnItemClickListener {
         store_scan_btn.setOnClickListener(View.OnClickListener { startActivity(Intent(this@StoreActivity, ScanProductActivity::class.java)) })
         cart_group.setOnClickListener { v -> startActivity(Intent(this@StoreActivity, CartActivity::class.java)) }
         cart_img.setOnClickListener { v -> startActivity(Intent(this@StoreActivity, CartActivity::class.java)) }
+        search_by_barcode_s_et.setOnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                makeRequest()
+                true
+            }
+            false
+        }
+
         search_img.setOnClickListener(View.OnClickListener { v ->
-            if (isValidData()) {
-                cachedUser.getUser()?.api_token?.let {
-                    Utils.getDeviceIMEI(this)?.let { terminal ->
-                        cachedUser?.getUser()?.lang?.let { it1 ->
-                            scanningViewModel.searchProductsByBarcode(
-                                it1, it, terminal, search_by_barcode_et.text.toString().trim())
-                        }
+            makeRequest()
+        })
+    }
+
+    private fun makeRequest(){
+        if (isValidData()) {
+            cachedUser.getUser()?.api_token?.let {
+                Utils.getDeviceIMEI(this)?.let { terminal ->
+                    cachedUser?.getUser()?.lang?.let { it1 ->
+                        scanningViewModel.searchProductsByBarcode(
+                            it1, it, terminal, search_by_barcode_s_et.text.toString().trim())
                     }
                 }
             }
-        })
+        }
     }
 
     private fun setupObserver(){
@@ -148,8 +162,9 @@ class StoreActivity : AppCompatActivity(), CategoryAdapter.OnItemClickListener {
                     Log.d("ScanningActivity", "--- ${it.data.toString()}")
                     it.data?.let {productModel ->
                         if (productModel.success){
-                            this.product = it.data.data.get(0)
-                            addProductToCart()
+                            it.data.data?.let {if (!it.isNullOrEmpty()){
+                                this.product = it.get(0)
+                                addProductToCart() }}
                         }else Toast.makeText(this, productModel.message, Toast.LENGTH_LONG).show()
                     }
                 }
@@ -208,7 +223,7 @@ class StoreActivity : AppCompatActivity(), CategoryAdapter.OnItemClickListener {
     }
 
     private fun isValidData(): Boolean{
-        if (search_by_barcode_et.text.isNullOrEmpty()){
+        if (search_by_barcode_s_et.text.isNullOrEmpty()){
             Toast.makeText(this@StoreActivity, getString(R.string.id_required), Toast.LENGTH_SHORT).show()
             return false
         }

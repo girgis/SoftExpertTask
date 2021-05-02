@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -43,7 +45,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupUI(){
-        market_name_tv.text = cachedUser.getUser()?.branch?.name
+        cachedUser.getUser()?.lang?.let {lang ->
+            if (lang == "ar")
+                market_name_tv.text = cachedUser.getUser()?.branch?.name_ar
+            else
+                market_name_tv.text = cachedUser.getUser()?.branch?.name
+        }
 
         Sale_cv.setOnClickListener(this)
         stock_cv.setOnClickListener(this)
@@ -56,18 +63,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Glide.with(this@MainActivity).load(logo).centerCrop().into(shop)
         }
 
+        user_name_et.setOnEditorActionListener{v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_DONE){
+                makeRequest()
+                true
+            } else {
+                false
+            }}
+
+        inquiry_btn.setOnClickListener { v ->
+            makeRequest()
+        }
+    }
+
+    private fun makeRequest(){
         cachedUser.getUser()?.let {user ->
-            inquiry_btn.setOnClickListener { v ->
-                Utils.getDeviceIMEI(this)?.let { terminal ->
-                    if (isValidData())
-                        mainViewModel.searchOrders(
-                            user.lang,
-                            user.api_token,
-                            terminal,
-                            user_name_et.text.toString().trim(),
-                            "all"
-                        )
-                }
+            Utils.getDeviceIMEI(this)?.let { terminal ->
+                if (isValidData())
+                    mainViewModel.searchOrders(
+                        user.lang,
+                        user.api_token,
+                        terminal,
+                        user_name_et.text.toString().trim(),
+                        "all"
+                    )
             }
         }
     }

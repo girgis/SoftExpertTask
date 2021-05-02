@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:lines="1"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:textSize="14sp"
                 android:textColor="@color/login_border"
                 android:textColorHint="@color/login_border"

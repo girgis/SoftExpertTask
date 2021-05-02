@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".features.profile.ProfileActivity">
@@ -51,7 +56,7 @@
             android:layout_marginTop="8dp"
             android:textColor="#717171"
             android:textSize="10sp"
-            android:text="@string/user_hint"/>
+            android:text="@string/branch_hint"/>
 
         <ImageView
             android:id="@+id/userName_arrow_iv"
@@ -121,7 +126,8 @@
             android:src="@drawable/language_arrow"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:rotationY="180"/>
+            android:rotationY="180"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -240,7 +246,8 @@
             android:src="@drawable/language_arrow"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:rotationY="180"/>
+            android:rotationY="180"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -424,6 +431,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
         android:id="@+id/change_password_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -501,3 +509,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

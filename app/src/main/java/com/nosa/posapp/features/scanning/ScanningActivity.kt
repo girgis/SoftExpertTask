@@ -59,6 +59,7 @@ class ScanningActivity : AppCompatActivity(), ProductAdapter.OnItemClickListener
     private var beepManager: BeepManager? = null
     private var lastText: String? = null
     var mSession_id: String? = null
+    var scanTime: Long = 0
 
     //doooooooooooon't forgot to save session_id
 
@@ -112,19 +113,19 @@ class ScanningActivity : AppCompatActivity(), ProductAdapter.OnItemClickListener
 
     private val callback: BarcodeCallback = object : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
-            if(result.getText() == null || result.getText().equals(lastText)) {
+            if(result.getText() == null || (System.currentTimeMillis() - scanTime) <= 2000) {
                 // Prevent duplicate scans
                 return;
             }
+            scanTime = System.currentTimeMillis()
             Toast.makeText(this@ScanningActivity, "Scanned: " + result.text, Toast.LENGTH_LONG).show()
             cachedUser.getUser()?.api_token?.let {
                 Utils.getDeviceIMEI(this@ScanningActivity)?.let { terminal_id ->
-                    { cachedUser?.getUser()?.lang?.let { it1 ->
+                        cachedUser?.getUser()?.lang?.let { it1 ->
                         scanningViewModel.searchProductsByBarcode(it1, it, terminal_id, result.text)
-                    } }
+                     }
                 }
             }
-
             beepManager?.playBeepSoundAndVibrate()
         }
         override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
@@ -138,7 +139,7 @@ class ScanningActivity : AppCompatActivity(), ProductAdapter.OnItemClickListener
                 mSession_id = session_id
                 cachedUser.getUser()?.let { user ->
                     Utils.getDeviceIMEI(this@ScanningActivity)?.let { terminal_id ->
-                        { scanningViewModel.getCart(user.lang, user.api_token, terminal_id, session_id) }
+                        scanningViewModel.getCart(user.lang, user.api_token, terminal_id, session_id)
                     }
                 }
             }
@@ -161,31 +162,30 @@ class ScanningActivity : AppCompatActivity(), ProductAdapter.OnItemClickListener
                 addFragmentToActivity(PaymentMethodsFragment.newInstance("",""))
         })
 
-        search_img.setOnClickListener {
-            if (!search_by_barcode_et.text.isNullOrEmpty()) {
-                cachedUser.getUser()?.api_token?.let {
-                    Utils.getDeviceIMEI(this)?.let { terminal_id ->
-                        cachedUser?.getUser()?.lang?.let { it1 ->
-                            scanningViewModel.searchProductsByBarcode(
-                                it1, it, terminal_id, search_by_barcode_et.text.toString())
-                        }
-                    }
-                }
-            }else {Toast.makeText(this@ScanningActivity, getString(R.string.write_barCode), Toast.LENGTH_SHORT).show()}
+        search_by_barcode_et.setOnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                makeRequest()
+                true
+            }
+            false
         }
 
         search_img.setOnClickListener(View.OnClickListener { v ->
-            if (isValidDataBar()) {
-                cachedUser.getUser()?.api_token?.let {
-                    Utils.getDeviceIMEI(this)?.let { terminal_id ->
-                        cachedUser?.getUser()?.lang?.let { it1 ->
-                            scanningViewModel.searchProductsByBarcode(
-                                it1, it, terminal_id, search_by_barcode_et.text.toString())
-                        }
+            makeRequest()
+        })
+    }
+
+    private fun makeRequest(){
+        if (isValidDataBar()) {
+            cachedUser.getUser()?.api_token?.let {
+                Utils.getDeviceIMEI(this)?.let { terminal_id ->
+                    cachedUser?.getUser()?.lang?.let { it1 ->
+                        scanningViewModel.searchProductsByBarcode(
+                            it1, it, terminal_id, search_by_barcode_et.text.toString())
                     }
                 }
             }
-        })
+        } else {Toast.makeText(this@ScanningActivity, getString(R.string.write_barCode), Toast.LENGTH_SHORT).show()}
     }
 
     private fun isValidDataBar(): Boolean{

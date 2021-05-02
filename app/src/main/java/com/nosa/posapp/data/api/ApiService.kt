@@ -1,6 +1,8 @@
 package com.nosa.posapp.data.api
 
 import com.nosa.posapp.data.model.*
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -101,5 +103,10 @@ interface ApiService {
     @FormUrlEncoded
     suspend fun resetPassword(@Header("X-localization") lang: String, @Field("code") code: String, @Field("password") password: String,
                               @Field("password_confirmation") password_confirmation: String): Response<ActivationCodeModel>
+
+    @Headers("Content-Type: application/json")
+    @POST("refund_requests/store")
+    suspend fun refundRequest(@Header("X-localization") lang: String, @Header("api-token") token: String,
+                              @Header("terminal-id") terminal_id:String, @Body body: RefundProductModel): Response<ActivationCodeModel>
 
 }

@@ -8,6 +8,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Product(
     @SerializedName("id") val id : Int,
+    @SerializedName("order_product_id") var order_product_id : Int,
     @SerializedName("enterprise_id") val enterprise_id : Int,
     @SerializedName("brand_id") val brand_id : Int,
     @SerializedName("name") val name : String?,
@@ -50,7 +51,7 @@ data class Product(
     @SerializedName("brand_logo") val brand_logo : String?,
     @SerializedName("agent") val agent : String?,
     @SerializedName("last_resource") val last_resource : String?,
-    @SerializedName("quantity") val quantity : String?,
+    @SerializedName("quantity") var quantity : Int,
     @SerializedName("created_at") val created_at : String?,
     @SerializedName("updated_at") val updated_at : String?,
     @SerializedName("deleted_at") val deleted_at : String?,
@@ -65,6 +66,7 @@ data class Product(
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -105,7 +107,7 @@ data class Product(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -120,6 +122,7 @@ data class Product(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
+        parcel.writeInt(order_product_id)
         parcel.writeInt(enterprise_id)
         parcel.writeInt(brand_id)
         parcel.writeString(name)
@@ -162,7 +165,7 @@ data class Product(
         parcel.writeString(brand_logo)
         parcel.writeString(agent)
         parcel.writeString(last_resource)
-        parcel.writeString(quantity)
+        parcel.writeInt(quantity)
         parcel.writeString(created_at)
         parcel.writeString(updated_at)
         parcel.writeString(deleted_at)
@@ -185,6 +188,15 @@ data class Product(
 
         override fun newArray(size: Int): Array<Product?> {
             return arrayOfNulls(size)
+        }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        when (other) {
+            is Product -> {
+                return this.id == other.id
+            }
+            else -> return false
         }
     }
 }

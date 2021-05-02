@@ -96,7 +96,7 @@
                 android:visibility="gone"/>
 
             <EditText
-                android:id="@+id/search_by_barcode_et"
+                android:id="@+id/search_by_barcode_s_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -107,6 +107,8 @@
                 android:layout_marginEnd="4dp"
                 android:lines="1"
                 android:maxLines="1"
+                android:singleLine="true"
+                android:inputType="number"
                 android:layout_centerVertical="true"/>
 
             <ImageView

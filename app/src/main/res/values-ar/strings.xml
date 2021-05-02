@@ -7,6 +7,7 @@
     <!-- login screen -->
     <string name="login_hint">مرحباً بك من جديد! للمتابعة قم بتسجيل الدخول</string>
     <string name="user_hint">أسم المستخدم</string>
+    <string name="branch_hint">أسم الفرع</string>
     <string name="password_hint">كلمة المرور</string>
     <string name="forgot_password">نسيت كلمة السر؟</string>
     <string name="login_btn">تسجيل الدخول</string>
@@ -39,6 +40,7 @@
     <string name="write_barCode">Please write Product BarCode</string>
     <string name="payment_done_success">تم الدفع بنجاح</string>
     <string name="print_bill">طباعة الفاتورة</string>
+    <string name="print_order">طباعة الطلب</string>
     <string name="send_bill">ارسال الفاتورة</string>
     <string name="back_to_home">العودة للرئيسية</string>
     <string name="phone_number">رقم الهاتف</string>
@@ -50,6 +52,12 @@
     <string name="credit_payment">البطاقة الذاكية</string>
     <string name="cash_payment">نقدي</string>
     <string name="next">التالي</string>
+    <string name="payment_data">بيانات الدفع</string>
+    <string name="owner_name">اسم المالك</string>
+    <string name="card_name">الاسم الموجود علي الكارد</string>
+    <string name="card_number">رقم البطاقة</string>
+    <string name="ccv_number">رقم CCV</string>
+    <string name="expire_date">تاريخ الانتهاء</string>
 
     <!-- store screen -->
     <string name="store">المخزن</string>
@@ -128,6 +136,10 @@
     <!-- return screen -->
     <string name="products_to_be_purchased">المنتجات اللتي تم شرائها</string>
     <string name="returned">المرتجع</string>
+    <string name="list_does_not_contains">العربة لا تحتوي هذا المنتج</string>
+    <string name="specify_returened_items">برجاء اضافة المرتجعات</string>
+    <string name="valid_returned_quantity">الكمية غير صحيحه</string>
+
     
     <!-- forgot Password screen -->
     <string name="retrieve_password">استرجاع كلمة المرور</string>

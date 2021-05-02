@@ -9,12 +9,14 @@
     android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/payment_methods_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/top_corner_rounded_white"
-        android:padding="30dp">
+        android:padding="30dp"
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_1"
@@ -51,9 +53,11 @@
             android:layout_marginEnd="6dp"
             android:background="@drawable/blue_rectangle"
             android:src="@drawable/icon_credit_card"
-            android:layout_marginTop="6dp"/>
+            android:layout_marginTop="6dp"
+            android:visibility="gone"/>
 
         <TextView
+            android:id="@+id/online_payment_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/online_payment_btn"
@@ -61,7 +65,8 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_1"
             android:text="@string/online_payment"
             android:textSize="12sp"
-            android:textColor="#090909"/>
+            android:textColor="#090909"
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/credit_payment_btn"
@@ -74,9 +79,11 @@
             android:layout_marginStart="6dp"
             android:background="@drawable/bg"
             android:src="@drawable/credit_card"
-            android:layout_marginTop="6dp"/>
+            android:layout_marginTop="6dp"
+            android:visibility="gone"/>
 
         <TextView
+            android:id="@+id/credit_payment_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/credit_payment_btn"
@@ -84,7 +91,8 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_2"
             android:text="@string/credit_payment"
             android:textSize="12sp"
-            android:textColor="#090909"/>
+            android:textColor="#090909"
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/cash_payment_btn"
@@ -96,7 +104,8 @@
             android:layout_marginStart="6dp"
             android:background="@drawable/bg"
             android:src="@drawable/cash"
-            android:layout_marginTop="6dp"/>
+            android:layout_marginTop="6dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/cash_payment_lbl"
@@ -107,7 +116,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/cash_payment"
             android:textSize="12sp"
-            android:textColor="#090909"/>
+            android:textColor="#090909"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/next_btn"
@@ -123,6 +133,180 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/top_corner_rounded_white"
+        android:padding="30dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/payment_data_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/payment_data"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/payment_data_title"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/owner_name"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+        
+        <EditText
+            android:id="@+id/owner_name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/owner_name"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/rounded_light_gray_with_border_bg"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:padding="6dp"
+            android:hint="@string/card_name"
+            android:textColor="#3A3A3A"
+            android:textColorHint="#3A3A3A"/>
+
+        <TextView
+            android:id="@+id/card_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/owner_name_et"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/card_number"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/owner_card_number_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_number_tv"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/rounded_light_gray_with_border_bg"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:padding="6dp"
+            android:hint="0000  0000  0000  0000"
+            android:inputType="number"
+            android:textColor="#3A3A3A"
+            android:textColorHint="#3A3A3A"
+            android:drawableEnd="@drawable/master_logo"/>
+
+        <TextView
+            android:id="@+id/ccv_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/owner_card_number_et"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/ccv_number"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/ccv_number_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_11"
+            app:layout_constraintTop_toBottomOf="@+id/ccv_number_tv"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/rounded_light_gray_with_border_bg"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:padding="6dp"
+            android:hint=""
+            android:textColor="#3A3A3A"
+            android:textColorHint="#3A3A3A" />
+
+        <TextView
+            android:id="@+id/expire_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guideline_11"
+            app:layout_constraintTop_toBottomOf="@+id/owner_card_number_et"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/ccv_number"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/expire_date_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guideline_11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ccv_number_tv"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/rounded_light_gray_with_border_bg"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:padding="6dp"
+            android:hint=""
+            android:textColor="#3A3A3A"
+            android:textColorHint="#3A3A3A" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/confirm_card_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expire_date_et"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/rounded_button_bg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/next"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
