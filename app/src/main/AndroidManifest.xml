@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.nosa.posapp">
+    package="com.tradex.pos">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.NFC" />
 
     <application
-        android:name=".App"
+        android:name="com.tradex.pos.App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,17 +22,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".features.forgotPassword.ForgotPasswordActivity"
+        <activity android:name="com.tradex.pos.features.forgotPassword.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
         <activity
-            android:name=".features.returnOrders.ReturnOrdersActivity"
+            android:name="com.tradex.pos.features.returnOrders.ReturnOrdersActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
-            android:name=".features.creditCard.CreditCardActivity"
+            android:name="com.tradex.pos.features.creditCard.CreditCardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
@@ -46,62 +46,62 @@
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
         <activity
-            android:name=".features.profile.ProfileActivity"
+            android:name="com.tradex.pos.features.profile.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.cart.success.SuccessCartActivity"
+            android:name="com.tradex.pos.features.cart.success.SuccessCartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.success.SuccessfulActivity"
+            android:name="com.tradex.pos.features.success.SuccessfulActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.orderDetails.OrderDetailsActivity"
+            android:name="com.tradex.pos.features.orderDetails.OrderDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.ordersHistory.OrdersHistoryActivity"
+            android:name="com.tradex.pos.features.ordersHistory.OrdersHistoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.cart.CartActivity"
+            android:name="com.tradex.pos.features.cart.CartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.store.ScanProductActivity"
+            android:name="com.tradex.pos.features.store.ScanProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.store.products.StoreProductsActivity"
+            android:name="com.tradex.pos.features.store.products.StoreProductsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.store.StoreActivity"
+            android:name="com.tradex.pos.features.store.StoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.scanning.ScanningActivity"
+            android:name="com.tradex.pos.features.scanning.ScanningActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".features.login.LoginActivity"
+            android:name="com.tradex.pos.features.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.tradex.pos.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden">
@@ -112,7 +112,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.main.MainActivity"
+            android:name="com.tradex.pos.features.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
     </application>
