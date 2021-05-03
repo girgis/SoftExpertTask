@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tradex.pos.R
 import com.tradex.pos.data.model.Category
+import com.tradex.pos.db.CachedUser
 import kotlinx.android.synthetic.main.adapter_category_item.view.*
 
 class CategoryAdapter(val context: Context,
@@ -16,10 +17,15 @@ class CategoryAdapter(val context: Context,
 
     var mContext:Context = context
     val mListener: OnItemClickListener? = listener
+    val cachedUser: CachedUser = CachedUser(context)
 
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(cat: Category, context: Context) {
-            itemView.catName_tv.text = cat.name
+            if (cachedUser?.getUser()?.lang == "ar") {
+                itemView.catName_tv.text = cat.name_ar
+            }else{
+                itemView.catName_tv.text = cat.name
+            }
             if (!cat.image.isNullOrEmpty())
                 Glide.with(context).load(cat.imagefullpath).centerCrop().into(itemView.catImage_iv)
             itemView.setOnClickListener { v -> listener.onItemClick(cat, adapterPosition) }

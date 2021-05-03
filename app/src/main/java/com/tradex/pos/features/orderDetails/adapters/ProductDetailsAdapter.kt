@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tradex.pos.R
 import com.tradex.pos.data.model.Products
+import com.tradex.pos.db.CachedUser
 import kotlinx.android.synthetic.main.adapter_product_item.view.*
 
 class ProductDetailsAdapter(val context: Context,
@@ -15,10 +16,15 @@ class ProductDetailsAdapter(val context: Context,
 
     var mContext:Context = context
     val mListener: OnItemClickListener? = listener
+    val cachedUser: CachedUser = CachedUser(context)
 
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Products, context: Context) {
-            itemView.product_value_tv.text = product.product?.name
+            if (cachedUser?.getUser()?.lang == "ar"){
+                itemView.product_value_tv.text = product.product?.name_ar
+            }else {
+                itemView.product_value_tv.text = product.product?.name
+            }
             itemView.quantity_value_tv.text = product.quantity.toString()
             itemView.price_value_tv.text = product.price.toString()
 

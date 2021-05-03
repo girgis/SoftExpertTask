@@ -94,7 +94,13 @@ class StoreProductsActivity : AppCompatActivity(), CategoryProductAdapter.OnItem
             }
         })
 
-        category?.let { title_tv.text = category?.name }
+        category?.let {
+            if (cachedUser?.getUser()?.lang == "ar"){
+                title_tv.text = category?.name_ar
+            }else {
+                title_tv.text = category?.name
+            }
+        }
         CachedCart.getInstance().cart?.let { cart ->
             cart.products?.let { list ->  updateBadge(list.size)}
         }

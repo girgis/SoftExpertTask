@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tradex.pos.R
 import com.tradex.pos.data.model.Product
+import com.tradex.pos.db.CachedUser
 import kotlinx.android.synthetic.main.adapter_category_item.view.catImage_iv
 import kotlinx.android.synthetic.main.adapter_category_product_item.view.*
 
@@ -17,10 +18,15 @@ class CategoryProductAdapter(val context: Context,
 
     var mContext:Context = context
     val mListener: OnItemClickListener? = listener
+    val cachedUser: CachedUser = CachedUser(context)
 
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Product, context: Context) {
-            itemView.productName_tv.text = product.name
+            if (cachedUser?.getUser()?.lang == "ar") {
+                itemView.productName_tv.text = product.name_ar
+            }else{
+                itemView.productName_tv.text = product.name
+            }
             itemView.productQuantity_tv.text = product.quantity.toString()
             itemView.productQuantityType_tv.text = product.special
             if (!product.images.isNullOrEmpty())

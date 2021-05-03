@@ -16,6 +16,7 @@ import com.example.githubproject.utils.Status
 import com.tradex.pos.R
 import com.tradex.pos.data.model.Product
 import com.tradex.pos.db.CachedCart
+import com.tradex.pos.db.CachedUser
 import com.tradex.pos.features.store.products.IOnBackPressed
 import com.tradex.pos.features.store.products.StoreProductsActivity
 import com.tradex.pos.utils.Utils
@@ -33,6 +34,7 @@ class ProductClickedFragment : Fragment(), View.OnClickListener, IOnBackPressed 
     private var product: Product? = null
     private lateinit var viewModel: ProductClickedViewModel
     private var activity: StoreProductsActivity? = null
+    var cachedUser: CachedUser? = null
 
     companion object {
         const val TAG = "product_clicked_fragment"
@@ -183,8 +185,12 @@ class ProductClickedFragment : Fragment(), View.OnClickListener, IOnBackPressed 
     }
 
     private fun setProductDetails(){
+        cachedUser = activity?.let { CachedUser(it) }
         product?.let {product ->
-            product_name_value_tv.text = product.name
+            if (cachedUser?.getUser()?.lang == "ar") {
+                product_name_value_tv.text = product.name_ar
+            }else
+                product_name_value_tv.text = product.name
             quantity_name_value_tv.text = product?.quantity?.toString()
             price_name_value_tv.text = product.price.toString()
         }

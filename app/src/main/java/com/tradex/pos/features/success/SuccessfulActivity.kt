@@ -28,7 +28,8 @@ class SuccessfulActivity : AppCompatActivity() {
     val cachedUser:CachedUser = CachedUser(this)
     private var session_id: String? = null
     private val cachedSys: CachedSysConstants = CachedSysConstants(this)
-    private var mPhone: String?  = null
+    private var mPhone: String  = ""
+    private var notNavigate = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,12 +56,18 @@ class SuccessfulActivity : AppCompatActivity() {
         })
 
         send_phone_iv.setOnClickListener(View.OnClickListener { v ->
-            if (isValidData())
+//            if (isValidData())
                 getInvoice()
         })
         print_bill_btn.setOnClickListener(View.OnClickListener { v ->
-            if (isValidData())
+//            if (isValidData())
                 getInvoice()
+        })
+        send_bill_btn.setOnClickListener(View.OnClickListener { v ->
+            if (isValidData()) {
+                notNavigate = true
+                getInvoice()
+            }
         })
     }
 
@@ -70,7 +77,10 @@ class SuccessfulActivity : AppCompatActivity() {
                 Status.SUCCESS -> {loading_ll.visibility = View.GONE
                     Toast.makeText(this@SuccessfulActivity, getString(R.string.success), Toast.LENGTH_SHORT).show()
                     it.data?.data?.let { message ->
-                        Utils.openLinkInBrowser(message, this@SuccessfulActivity)
+                        if (!notNavigate) {
+                            Utils.openLinkInBrowser(message, this@SuccessfulActivity)
+                        }else
+                            notNavigate = false
                     }
                 }
                 Status.LOADING -> {loading_ll.visibility = View.VISIBLE}
@@ -84,9 +94,9 @@ class SuccessfulActivity : AppCompatActivity() {
             cachedUser.getUser()?.lang?.let { lang ->
                 cachedUser.getUser()?.api_token?.let { token ->
                     session_id?.let { s ->
-                        mPhone?.let {
-                            successViewModel.getInvoiceView(lang, token, terminal, s, it)
-                        }
+//                        mPhone?.let {
+                            successViewModel.getInvoiceView(lang, token, terminal, s, mPhone)
+//                        }
                     }
                 }
             }
