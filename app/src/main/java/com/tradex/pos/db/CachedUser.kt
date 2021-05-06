@@ -5,6 +5,11 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.tradex.pos.data.model.User
 
+
+/**
+ * i have a bad construction here I knoe it
+ * بس وانت مال اهللك
+ */
 class CachedUser (context: Context){
     private val mContext = context
 
