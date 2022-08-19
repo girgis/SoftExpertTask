@@ -39,6 +39,29 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="40dp"/>
 
+    <TextView
+        android:id="@+id/current_city_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clock_dc"
+        app:layout_constraintBottom_toTopOf="@+id/sun_stroke_imgV"
+        android:text="London"
+        android:textSize="32sp"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/current_city_values_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_city_tv"
+        android:text="London"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"/>
+
     <ImageView
         android:id="@+id/search_icon_im"
         android:layout_width="24dp"

@@ -80,6 +80,8 @@ class MainActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     it.data?.let { Log.d("zzz", "--- temp_f= ${it.current.temp_f}")
                         Log.d("zzz", "--- 2day= ${it.forecast.forecastday.get(1).day.maxtemp_f}")
+                        current_city_tv.text = it.location.name
+                        current_city_values_tv.text = it.location.localtime
                         Glide.with(this@MainActivity).load("https://" + it.current.condition.icon).into(sun_stroke_imgV)
                         setImages(it.forecast)
                         temp_in_f_tv.text = it.current.temp_f.toString() + "F"
