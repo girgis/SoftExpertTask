@@ -1,5 +1,6 @@
 package com.mindorks.framework.mvvm.ui.main.adapter
 
+import android.app.Activity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,21 +8,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubproject.R
+import com.example.githubproject.data.model.Region
 import com.example.githubproject.data.model.User
+import com.example.githubproject.ui.main.MainActivity
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapter(
-    private val users: ArrayList<User>
+    private val users: ArrayList<Region>,
+    private val activity: Activity
 ) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
+    val mActivity: Activity = activity
+
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(user: User) {
-            itemView.textViewUserName.text = user.brand
-            itemView.textViewUserEmail.text = user.constractionYear
-            itemView.textIsUsed.text = "is used: ".plus(user.isUsed)
-            Glide.with(itemView.imageViewAvatar.context)
-                .load(user.imageUrl)
-                .into(itemView.imageViewAvatar)
+        fun bind(region: Region, activity: Activity) {
+            itemView.textViewUserName.text = region.name + " - " + region.region
+            itemView.setOnClickListener { v: View? ->
+                if (activity is MainActivity){
+                    (activity as MainActivity).setSelectedRegion(region.name)
+                }
+            }
         }
     }
 
@@ -36,9 +42,9 @@ class MainAdapter(
     override fun getItemCount(): Int = users.size
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) =
-        holder.bind(users[position])
+        holder.bind(users[position], mActivity)
 
-    fun addData(list: List<User>, page: Int) {
+    fun addData(list: List<Region>, page: Int) {
         Log.d("MainAdapter", "--- ++page ${page}")
         if (page == 1) {
             Log.d("MainAdapter", "--- page ${page}")
